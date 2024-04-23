@@ -21,8 +21,9 @@ function App() {
         <UserContext.Provider value={{ userState, setUserState }}>
             <Router>
                 <Routes>
-                    <Route path="/" element={userState.token ? <Home /> : <Navigate replace to="/login" />} />
-                    <Route path="/login" element={!userState.token ? <Login /> : <Navigate replace to="/" />} />
+                    <Route path="/" element={<Navigate to="/login" />} />
+                    <Route path="/login" element={!userState.token ? <Login /> : <Navigate to="/welcome" />} />
+                    <Route path="/welcome" element={userState.token ? <Home /> : <Navigate to="/login" />} />
                     <Route path="/music" element={<MusicTable />} />
                 </Routes>
             </Router>

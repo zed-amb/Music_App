@@ -38,9 +38,11 @@ export const getPlaylist = async () => {
 };
 
 export const addToPlaylist = async (songId) => {
-  const response = await axios.post('/playlist/add', { songId });
-  return checkError(response);
+    const response = await axios.post('/playlist/add', { songId });
+    return checkError(response);
 };
+
+
 
 export const removeFromPlaylist = async (songId) => {
     try {

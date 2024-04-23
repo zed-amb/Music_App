@@ -1,8 +1,8 @@
-
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../network/network';
 import UserContext from '../contexts/user-context';
+import './login.css'; 
 
 export default function Login() {
     const { setUserState } = useContext(UserContext);
@@ -24,14 +24,17 @@ export default function Login() {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleLogin}>
-                <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className="login-container">
+
+            <form onSubmit={handleLogin} className="login-form">
+                <label htmlFor="username">Username:</label>
+                <input type="text" id="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <label htmlFor="password">Password:</label>
+                <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Login</button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {error && <p className="error-message">{error}</p>}
             </form>
+            <div className="welcome-message">Welcome to my Music App</div>
         </div>
     );
 }
